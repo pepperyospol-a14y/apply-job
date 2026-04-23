@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HYR Recruitment</title>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
     <style>
         body {
             font-family: 'Kanit', sans-serif;
@@ -15,6 +17,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            overflow-x: hidden;
         }
         .container {
             background: rgba(255, 255, 255, 0.05);
@@ -25,12 +28,17 @@
             width: 90%;
             max-width: 500px;
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         #main-page img {
             width: 100%;
             max-width: 250px;
             border-radius: 15px;
             margin-bottom: 20px;
+            transition: transform 0.5s ease;
+        }
+        #main-page img:hover {
+            transform: scale(1.05) rotate(2deg);
         }
         .btn-apply {
             background: #00bfff;
@@ -41,15 +49,29 @@
             border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+        }
+        .btn-apply:hover {
+            transform: scale(1.1);
+            background: #0099cc;
+            box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
         }
         #form-page { display: none; text-align: left; }
+        
         .form-card {
             background: rgba(255, 255, 255, 0.1);
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 15px;
             border-left: 5px solid #f1c40f;
+            transition: transform 0.3s ease;
         }
+        .form-card:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
         label { color: #f1c40f; display: block; margin-bottom: 8px; }
         input, select, textarea {
             width: 100%;
@@ -59,6 +81,10 @@
             border-radius: 5px;
             color: white;
             box-sizing: border-box;
+            outline: none;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #f1c40f;
         }
         .btn-submit {
             background: #f1c40f;
@@ -69,24 +95,41 @@
             border-radius: 10px;
             font-weight: 600;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
+        .btn-submit:hover {
+            background: #d4ac0d;
+            letter-spacing: 2px;
+        }
+
+        /* คลาสสำหรับหน่วงเวลาอนิเมชั่น */
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
-<div class="container">
-    <div id="main-page">
-        <img src="hyr-logo.png" alt="HYR Logo">
+
+<div class="container animate__animated animate__fadeIn">
+    <div id="main-page" class="animate__animated animate__zoomIn">
+        <img src="hyr-logo.png" alt="HYR Logo" class="animate__animated animate__pulse animate__infinite">
         <h2 style="color:#f1c40f">HAT YAI RAILWAYS</h2>
-        <p>ยินดีต้อนรับสู่ระบบรับสมัครพนักงาน</p>
-        <button class="btn-apply" onclick="showForm()">คลิกเพื่อเริ่มสมัคร</button>
+        <p class="animate__animated animate__fadeInUp delay-1">ยินดีต้อนรับสู่ระบบรับสมัครพนักงาน</p>
+        <button class="btn-apply animate__animated animate__fadeInUp delay-2" onclick="showForm()">คลิกเพื่อเริ่มสมัคร</button>
     </div>
 
     <div id="form-page">
-        <h2 style="text-align:center; color:#f1c40f">แบบฟอร์มสมัครงาน</h2>
+        <h2 style="text-align:center; color:#f1c40f" class="animate__animated animate__fadeInDown">แบบฟอร์มสมัครงาน</h2>
         <form id="applicationForm">
-            <div class="form-card"><label>👤 ชื่อ-นามสกุล</label><input type="text" required></div>
-            <div class="form-card"><label>🎮 ชื่อดิสคอร์ด</label><input type="text" required></div>
-            <div class="form-card">
+            <div class="form-card animate__animated animate__fadeInLeft delay-1">
+                <label>👤 ชื่อ-นามสกุล</label>
+                <input type="text" required placeholder="กรอกชื่อของคุณ">
+            </div>
+            <div class="form-card animate__animated animate__fadeInLeft delay-2">
+                <label>🎮 ชื่อดิสคอร์ด</label>
+                <input type="text" required placeholder="Name#0000">
+            </div>
+            <div class="form-card animate__animated animate__fadeInLeft delay-3">
                 <label>🚉 ตำแหน่งที่สมัคร</label>
                 <select required>
                     <option value="">-- เลือกตำแหน่ง --</option>
@@ -99,28 +142,44 @@
                     <option>พนักงานห้ามล้อ</option>
                 </select>
             </div>
-            <div class="form-card"><label>📝 เหตุผลที่อยากสมัคร (2-3 บรรทัด)</label><textarea rows="3" required></textarea></div>
-            <div class="form-card">
-                <label>⚠️ หลังจากที่สมัครไปแล้ว จะไม่เรื้อนแมพ / ทำให้คุณเต้ขายขี้หน้า / อับอาย ใช่หรือไม่</label>
+            <div class="form-card animate__animated animate__fadeInUp delay-1">
+                <label>📝 เหตุผลที่อยากสมัคร (2-3 บรรทัด)</label>
+                <textarea rows="3" required></textarea>
+            </div>
+            <div class="form-card animate__animated animate__fadeInUp delay-2">
+                <label>⚠️ สัญญาว่าจะไม่ทำเสื่อมเสียใช่หรือไม่?</label>
                 <select required>
                     <option value="">-- โปรดยืนยัน --</option>
                     <option>ใช่ ข้าพเจ้าสัญญา</option>
-                    <option>ไม่ ข้าพเจ้าไม่สน</option>
+                    <option>ไม่</option>
                 </select>
             </div>
-            <button type="submit" class="btn-submit">ส่งใบสมัคร</button>
+            <button type="submit" class="btn-submit animate__animated animate__bounceIn delay-3">ส่งใบสมัคร</button>
         </form>
     </div>
 </div>
+
 <script>
     function showForm() {
-        document.getElementById('main-page').style.display = 'none';
-        document.getElementById('form-page').style.display = 'block';
+        const mainPage = document.getElementById('main-page');
+        const formPage = document.getElementById('form-page');
+
+        // ใส่เอฟเฟกต์ขาออกให้หน้าแรก
+        mainPage.classList.remove('animate__zoomIn');
+        mainPage.classList.add('animate__fadeOutLeft');
+
+        setTimeout(() => {
+            mainPage.style.display = 'none';
+            formPage.style.display = 'block';
+            // หน้าฟอร์มจะใช้ animation ที่เราใส่ไว้ใน HTML class อยู่แล้ว
+        }, 500);
     }
+
     document.getElementById('applicationForm').onsubmit = function(e) {
         e.preventDefault();
-        alert('ส่งใบสมัครสำเร็จ!');
+        alert('ส่งใบสมัครสำเร็จ! ทีมงานจะติดต่อกลับไปทางดิสคอร์ด');
     };
 </script>
+
 </body>
 </html>
