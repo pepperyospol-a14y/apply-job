@@ -3,16 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ระบบสมัครพนักงาน - Yellow Edition (HYR)</title>
+    <title>HYR Recruitment</title>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --main-yellow: #f1c40f;
-            --dark-yellow: #f39c12;
-            --bg-dark: #1a1a1a;
-            --main-blue: #00bfff; /* เพิ่มสีฟ้าจากโลโก้เล็กน้อย */
-        }
-
         body {
             font-family: 'Kanit', sans-serif;
             background: radial-gradient(circle, #2c3e50 0%, #000000 100%);
@@ -23,119 +16,80 @@
             align-items: center;
             min-height: 100vh;
         }
-
         .container {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            padding: 40px;
+            padding: 30px;
             border-radius: 20px;
-            border: 2px solid var(--main-yellow);
-            box-shadow: 0 0 20px rgba(241, 196, 15, 0.2);
+            border: 2px solid #f1c40f;
             width: 90%;
-            max-width: 600px;
+            max-width: 500px;
             text-align: center;
         }
-
-        /* หัวข้อ */
-        h2 { color: var(--main-yellow); text-transform: uppercase; letter-spacing: 2px; }
-
-        /* การปรับแต่งหน้าแรก */
         #main-page img {
-            width: 80%; /* ลดขนาดโลโก้ลงเล็กน้อยเพื่อให้ดูสมดุล */
-            max-width: 300px; /* กำหนดขนาดสูงสุด */
+            width: 100%;
+            max-width: 250px;
             border-radius: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
-
         .btn-apply {
-            background: linear-gradient(45deg, var(--main-blue), #1e90ff); /* เปลี่ยนเป็นสีฟ้าตามโลโก้ HYR */
+            background: #00bfff;
             color: white;
             border: none;
-            padding: 15px 50px;
-            font-size: 1.3rem;
-            font-weight: 600;
+            padding: 15px 40px;
+            font-size: 1.2rem;
             border-radius: 50px;
             cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.4);
+            font-weight: 600;
         }
-
-        .btn-apply:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 191, 255, 0.6); }
-
-        /* สไตล์ฟอร์มแบบ Card ตามรูปที่ส่งมา */
         #form-page { display: none; text-align: left; }
-
         .form-card {
             background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 12px;
+            padding: 15px;
+            border-radius: 10px;
             margin-bottom: 15px;
-            border-left: 5px solid var(--main-yellow);
-            transition: 0.3s;
+            border-left: 5px solid #f1c40f;
         }
-
-        .form-card:hover { background: rgba(255, 255, 255, 0.15); }
-
-        label { display: block; font-weight: 400; margin-bottom: 10px; color: var(--main-yellow); }
-
+        label { color: #f1c40f; display: block; margin-bottom: 8px; }
         input, select, textarea {
             width: 100%;
-            padding: 12px;
-            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            background: rgba(0,0,0,0.3);
             border: 1px solid #444;
-            border-radius: 8px;
+            border-radius: 5px;
             color: white;
-            font-family: 'Kanit';
+            box-sizing: border-box;
         }
-
-        input:focus, select:focus { border-color: var(--main-yellow); outline: none; }
-
         .btn-submit {
-            background: var(--main-blue); /* เปลี่ยนปุ่มส่งเป็นสีฟ้า */
-            color: white;
+            background: #f1c40f;
+            color: black;
             width: 100%;
             padding: 15px;
             border: none;
             border-radius: 10px;
             font-weight: 600;
-            font-size: 1.1rem;
             cursor: pointer;
-            margin-top: 10px;
         }
-
-        option { background: #333; color: white; }
     </style>
 </head>
 <body>
-
 <div class="container">
     <div id="main-page">
-        <img src="hyr-logo.png" alt="โลโก้ HAT YAI RAILWAYS (HYR)">
-        <h2>ระบบรับสมัครพนักงาน</h2>
-        <p style="color: #ccc;">ยินดีต้อนรับสู่ครอบครัว HAT YAI RAILWAYS</p>
-        <p style="color: #ccc;">กรุณากดปุ่มด้านล่างเพื่อเริ่มกรอกข้อมูลสมัครงาน</p>
-        <br>
+        <img src="hyr-logo.png" alt="HYR Logo">
+        <h2 style="color:#f1c40f">HAT YAI RAILWAYS</h2>
+        <p>ยินดีต้อนรับสู่ระบบรับสมัครพนักงาน</p>
         <button class="btn-apply" onclick="showForm()">สมัครงาน</button>
     </div>
 
     <div id="form-page">
-        <h2 style="text-align: center;">แบบฟอร์มสมัครงาน</h2>
+        <h2 style="text-align:center; color:#f1c40f">แบบฟอร์มสมัครงาน</h2>
         <form id="applicationForm">
-            
+            <div class="form-card"><label>👤 ชื่อ-นามสกุล</label><input type="text" required></div>
+            <div class="form-card"><label>🎮 ชื่อดิสคอร์ด</label><input type="text" required></div>
             <div class="form-card">
-                <label>👤 ชื่อ - นามสกุล</label>
-                <input type="text" placeholder="ระบุชื่อจริง-นามสกุล" required>
-            </div>
-
-            <div class="form-card">
-                <label>🎮 ชื่อดิสคอร์ด</label>
-                <input type="text" placeholder="เช่น Name#1234" required>
-            </div>
-
-            <div class="form-card">
-                <label>🚉 ตำแหน่งที่ต้องการ</label>
+                <label>🚉 ตำแหน่งที่สมัคร</label>
                 <select required>
-                    <option value="" disabled selected>เลือก 1 ตำแหน่ง</option>
+                    <option value="">-- เลือกตำแหน่ง --</option>
                     <option>พนักงานขับรถไฟ</option>
                     <option>นายสถานี</option>
                     <option>พนักงานขายตั๋ว</option>
@@ -145,48 +99,28 @@
                     <option>พนักงานห้ามล้อ</option>
                 </select>
             </div>
-
+            <div class="form-card"><label>📝 เหตุผลที่อยากสมัคร (2-3 บรรทัด)</label><textarea rows="3" required></textarea></div>
             <div class="form-card">
-                <label>📝 เหตุผลที่อยากสมัคร (2-3 บรรทัด)</label>
-                <textarea rows="3" placeholder="ระบุเหตุผลของคุณ..." required></textarea>
-            </div>
-
-            <div class="form-card">
-                <label>⚠️ คำสัญญา (จะไม่ทำให้คุณเต้ขายหน้า)</label>
+                <label>⚠️ หลังจากที่สมัครไปแล้ว จะไม่เรื้อนแมพ / ทำให้คุณเต้ขายขี้หน้า / อับอาย ใช่หรือไม่</label>
                 <select required>
-                    <option value="" disabled selected>โปรดยืนยัน</option>
+                    <option value="">-- โปรดยืนยัน --</option>
                     <option>ใช่ ข้าพเจ้าสัญญา</option>
-                    <option>ไม่ (ไม่สามารถสมัครได้)</option>
+                    <option>ไม่ ข้าพเจ้าไม่สน</option>
                 </select>
             </div>
-
-            <button type="submit" class="btn-submit">ส่งใบสมัครข้อมูล</button>
+            <button type="submit" class="btn-submit">ส่งใบสมัคร</button>
         </form>
     </div>
 </div>
-
 <script>
     function showForm() {
         document.getElementById('main-page').style.display = 'none';
         document.getElementById('form-page').style.display = 'block';
     }
-
-    // ในอนาคตคุณสามารถนำ Webhook URL ของ Discord มาใส่ตรงนี้เพื่อส่งข้อมูลจริง
-    const webhookURL = ""; // ใส่ URL ของ Discord Webhook ถ้ามี
-
     document.getElementById('applicationForm').onsubmit = function(e) {
         e.preventDefault();
-        
-        // ถ้าใส่ Webhook URL ไว้ ข้อมูลจะถูกส่งไปยัง Discord
-        if (webhookURL) {
-            // โค้ดสำหรับส่งข้อมูลไป Discord (จะใช้งานได้ก็ต่อเมื่อมี Webhook URL)
-            alert('ส่งข้อมูลไปยัง Discord เรียบร้อยแล้ว! (ถ้าใส่ Webhook URL ไว้)');
-        } else {
-            // ถ้าไม่มี Webhook URL ก็แค่ขึ้น Alert แจ้งเตือน
-            alert('ส่งใบสมัครเรียบร้อยแล้ว!');
-        }
+        alert('ส่งใบสมัครสำเร็จ!');
     };
 </script>
-
 </body>
 </html>
