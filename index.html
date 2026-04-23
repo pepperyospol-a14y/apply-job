@@ -35,10 +35,6 @@
             max-width: 250px;
             border-radius: 15px;
             margin-bottom: 20px;
-            transition: transform 0.5s ease;
-        }
-        #main-page img:hover {
-            transform: scale(1.05) rotate(2deg);
         }
         .btn-apply {
             background: #00bfff;
@@ -50,13 +46,9 @@
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
         }
-        .btn-apply:hover {
-            transform: scale(1.1);
-            background: #0099cc;
-            box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
-        }
+        .btn-apply:hover { transform: scale(1.1); background: #0099cc; }
+        
         #form-page { display: none; text-align: left; }
         
         .form-card {
@@ -65,13 +57,7 @@
             border-radius: 10px;
             margin-bottom: 15px;
             border-left: 5px solid #f1c40f;
-            transition: transform 0.3s ease;
         }
-        .form-card:hover {
-            transform: translateX(10px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-        
         label { color: #f1c40f; display: block; margin-bottom: 8px; }
         input, select, textarea {
             width: 100%;
@@ -81,10 +67,6 @@
             border-radius: 5px;
             color: white;
             box-sizing: border-box;
-            outline: none;
-        }
-        input:focus, select:focus, textarea:focus {
-            border-color: #f1c40f;
         }
         .btn-submit {
             background: #f1c40f;
@@ -95,14 +77,10 @@
             border-radius: 10px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
-        .btn-submit:hover {
-            background: #d4ac0d;
-            letter-spacing: 2px;
-        }
+        .btn-submit:hover { background: #d4ac0d; }
 
-        /* คลาสสำหรับหน่วงเวลาอนิเมชั่น */
         .delay-1 { animation-delay: 0.2s; }
         .delay-2 { animation-delay: 0.4s; }
         .delay-3 { animation-delay: 0.6s; }
@@ -112,10 +90,10 @@
 
 <div class="container animate__animated animate__fadeIn">
     <div id="main-page" class="animate__animated animate__zoomIn">
-        <img src="hyr-logo.png" alt="HYR Logo" class="animate__animated animate__pulse animate__infinite">
+        <img src="135_20260402003057 (1).webp" alt="HYR Logo" class="animate__animated animate__pulse animate__infinite">
         <h2 style="color:#f1c40f">HAT YAI RAILWAYS</h2>
         <p class="animate__animated animate__fadeInUp delay-1">ยินดีต้อนรับสู่ระบบรับสมัครพนักงาน</p>
-        <button class="btn-apply animate__animated animate__fadeInUp delay-2" onclick="showForm()">คลิกเพื่อเริ่มสมัคร</button>
+        <button class="btn-apply animate__animated animate__fadeInUp delay-2" onclick="showForm()">สมัครงาน</button>
     </div>
 
     <div id="form-page">
@@ -123,15 +101,15 @@
         <form id="applicationForm">
             <div class="form-card animate__animated animate__fadeInLeft delay-1">
                 <label>👤 ชื่อ-นามสกุล</label>
-                <input type="text" required placeholder="กรอกชื่อของคุณ">
+                <input type="text" id="name" required placeholder="กรอกชื่อของคุณ">
             </div>
             <div class="form-card animate__animated animate__fadeInLeft delay-2">
                 <label>🎮 ชื่อดิสคอร์ด</label>
-                <input type="text" required placeholder="Name#0000">
+                <input type="text" id="discord" required placeholder="Name#0000">
             </div>
             <div class="form-card animate__animated animate__fadeInLeft delay-3">
                 <label>🚉 ตำแหน่งที่สมัคร</label>
-                <select required>
+                <select id="position" required>
                     <option value="">-- เลือกตำแหน่ง --</option>
                     <option>พนักงานขับรถไฟ</option>
                     <option>นายสถานี</option>
@@ -144,17 +122,17 @@
             </div>
             <div class="form-card animate__animated animate__fadeInUp delay-1">
                 <label>📝 เหตุผลที่อยากสมัคร (2-3 บรรทัด)</label>
-                <textarea rows="3" required></textarea>
+                <textarea id="reason" rows="3" required></textarea>
             </div>
             <div class="form-card animate__animated animate__fadeInUp delay-2">
                 <label>⚠️ สัญญาว่าจะไม่ทำเสื่อมเสียใช่หรือไม่?</label>
-                <select required>
+                <select id="promise" required>
                     <option value="">-- โปรดยืนยัน --</option>
                     <option>ใช่ ข้าพเจ้าสัญญา</option>
                     <option>ไม่</option>
                 </select>
             </div>
-            <button type="submit" class="btn-submit animate__animated animate__bounceIn delay-3">ส่งใบสมัคร</button>
+            <button type="submit" id="submitBtn" class="btn-submit animate__animated animate__bounceIn delay-3">ส่งใบสมัคร</button>
         </form>
     </div>
 </div>
@@ -163,21 +141,53 @@
     function showForm() {
         const mainPage = document.getElementById('main-page');
         const formPage = document.getElementById('form-page');
-
-        // ใส่เอฟเฟกต์ขาออกให้หน้าแรก
-        mainPage.classList.remove('animate__zoomIn');
         mainPage.classList.add('animate__fadeOutLeft');
-
         setTimeout(() => {
             mainPage.style.display = 'none';
             formPage.style.display = 'block';
-            // หน้าฟอร์มจะใช้ animation ที่เราใส่ไว้ใน HTML class อยู่แล้ว
         }, 500);
     }
 
     document.getElementById('applicationForm').onsubmit = function(e) {
         e.preventDefault();
-        alert('ส่งใบสมัครสำเร็จ! ทีมงานจะติดต่อกลับไปทางดิสคอร์ด');
+        
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.innerText = "กำลังส่ง...";
+        submitBtn.disabled = true;
+
+        // *** ใส่ Webhook URL ของคุณที่นี่ ***
+        const webhookURL = "https://discord.com/api/webhooks/1496815302204326002/CMBIspZ753p4e6oSlXautHlSCSOMHCqIgPGe1A1shb2qBQT5oVOjo4SzEh55hCUIdgPK"; 
+
+        const data = {
+            username: "HYR Recruitment Bot",
+            embeds: [{
+                title: "📢 มีใบสมัครใหม่เข้าสถานี!",
+                color: 15844367,
+                fields: [
+                    { name: "👤 ชื่อ-นามสกุล", value: document.getElementById('name').value, inline: true },
+                    { name: "🎮 ดิสคอร์ด", value: document.getElementById('discord').value, inline: true },
+                    { name: "🚉 ตำแหน่ง", value: document.getElementById('position').value, inline: false },
+                    { name: "📝 เหตุผล", value: document.getElementById('reason').value },
+                    { name: "⚠️ คำสัญญา", value: document.getElementById('promise').value }
+                ],
+                footer: { text: "HAT YAI RAILWAYS System" }
+            }]
+        };
+
+        fetch(webhookURL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(() => {
+            alert('ส่งใบสมัครสำเร็จ! ทีมงานจะติดต่อกลับไป');
+            location.reload();
+        })
+        .catch(() => {
+            alert('เกิดข้อผิดพลาด กรุณาลองใหม่');
+            submitBtn.innerText = "ส่งใบสมัคร";
+            submitBtn.disabled = false;
+        });
     };
 </script>
 
