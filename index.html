@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HYR Recruitment | สมัครงาน</title>
+    <title>HYR Recruitment</title>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    
     <style>
         body {
             font-family: 'Kanit', sans-serif;
@@ -17,168 +16,60 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow-x: hidden;
         }
         .container {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 25px;
+            padding: 40px;
+            border-radius: 20px;
             border: 2px solid #f1c40f;
             width: 90%;
-            max-width: 500px;
+            max-width: 450px;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
         }
-        #main-page img {
+        .logo-img {
             width: 100%;
             max-width: 250px;
-            border-radius: 20px;
+            border-radius: 15px;
             margin-bottom: 20px;
         }
         .btn-apply {
-            background: #00bfff;
+            background: linear-gradient(45deg, #00bfff, #0077ff);
             color: white;
-            border: none;
-            padding: 15px 45px;
+            text-decoration: none;
+            padding: 18px 45px;
             font-size: 1.2rem;
             border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4);
-        }
-        .btn-apply:hover { transform: scale(1.1); background: #0099cc; }
-
-        /* Form Styling */
-        #form-page { display: none; text-align: left; }
-        .form-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            border-left: 5px solid #f1c40f;
-            transition: 0.3s;
-        }
-        .form-card:hover { transform: translateX(5px); background: rgba(255, 255, 255, 0.15); }
-        
-        label { color: #f1c40f; display: block; margin-bottom: 8px; font-size: 0.9rem; }
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            background: rgba(0,0,0,0.4);
-            border: 1px solid #444;
-            border-radius: 8px;
-            color: white;
-            box-sizing: border-box;
-            font-family: 'Kanit', sans-serif;
-        }
-        input:focus { border-color: #f1c40f; outline: none; }
-
-        .btn-submit {
-            background: #f1c40f;
-            color: black;
-            width: 100%;
-            padding: 15px;
+            display: inline-block;
+            transition: all 0.3s ease;
             border: none;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: 0.3s;
         }
-        .btn-submit:hover { background: #d4ac0d; transform: translateY(-2px); }
-        .btn-submit:disabled { background: #7f8c8d; cursor: not-allowed; }
-
-        /* Animation Delays */
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
+        .btn-apply:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.6);
+        }
     </style>
 </head>
 <body>
 
 <div class="container animate__animated animate__fadeIn">
-    <div id="main-page" class="animate__animated animate__zoomIn">
-        <img src="hyr-logo.png" alt="HYR Logo" class="animate__animated animate__pulse animate__infinite">
-        <h2 style="color:#f1c40f; margin: 10px 0;">HAT YAI RAILWAYS</h2>
-        <p style="color: #ccc; margin-bottom: 25px;">ระบบรับสมัครพนักงานออนไลน์</p>
-        <button class="btn-apply" onclick="showForm()">เริ่มสมัครงาน</button>
-    </div>
+    <div class="animate__animated animate__zoomIn">
+        <img src="hyr-logo.png" alt="HYR Logo" class="logo-img animate__animated animate__pulse animate__infinite">
+        
+        <h2 style="color:#f1c40f">HAT YAI RAILWAYS</h2>
+        <p>เปิดรับสมัครพนักงานใหม่</p>
+        
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_m_TOD_IrnqxMx4Fj2dryrDLgCU8tF-u10WNsw8-8n5M73A/viewform?usp=header" target="_blank" class="btn-apply">
+            เริ่มการสมัครงาน
+        </a>
 
-    <div id="form-page">
-        <h2 style="text-align:center; color:#f1c40f" class="animate__animated animate__fadeInDown">แบบฟอร์มสมัครงาน</h2>
-        <form id="hyr-job-form">
-            <div class="form-card animate__animated animate__fadeInLeft delay-1">
-                <label>👤 ชื่อ-นามสกุล</label>
-                <input type="text" name="name" placeholder="ระบุชื่อจริง-นามสกุล" required>
-            </div>
-            <div class="form-card animate__animated animate__fadeInLeft delay-2">
-                <label>🎮 ชื่อดิสคอร์ด</label>
-                <input type="text" name="discord" placeholder="ตัวอย่าง: Name#0000" required>
-            </div>
-            <div class="form-card animate__animated animate__fadeInLeft delay-3">
-                <label>🚉 ตำแหน่งที่สมัคร</label>
-                <select name="position" required>
-                    <option value="">-- เลือกตำแหน่ง --</option>
-                    <option>พนักงานขับรถไฟ</option>
-                    <option>นายสถานี</option>
-                    <option>พนักงานขายตั๋ว</option>
-                    <option>พนักงานคุมประแจ</option>
-                    <option>พนักงานไม้กั้น</option>
-                    <option>พนักงานรักษารถ</option>
-                    <option>พนักงานห้ามล้อ</option>
-                </select>
-            </div>
-            <div class="form-card animate__animated animate__fadeInUp delay-1">
-                <label>📝 เหตุผลที่อยากสมัคร</label>
-                <textarea name="reason" rows="3" placeholder="บอกเราสั้นๆ ว่าทำไมคุณถึงอยากร่วมงานกับเรา" required></textarea>
-            </div>
-            <button type="submit" id="submitBtn" class="btn-submit animate__animated animate__bounceIn delay-2">ส่งใบสมัคร</button>
-        </form>
+        <p style="font-size: 0.8rem; margin-top: 25px; color: #888;">
+            * ข้อมูลของคุณจะได้รับการคุ้มครองโดยระบบ Google Security
+        </p>
     </div>
 </div>
-
-<script>
-    // ฟังก์ชันสลับหน้าพร้อมอนิเมชั่น
-    function showForm() {
-        const main = document.getElementById('main-page');
-        const formPage = document.getElementById('form-page');
-        main.classList.add('animate__fadeOut');
-        setTimeout(() => {
-            main.style.display = 'none';
-            formPage.style.display = 'block';
-        }, 500);
-    }
-
-    // ส่วนเชื่อมต่อ Google Sheets (Apps Script)
-    // *** นำ URL ที่ได้จากตอน Deploy 'Web App' มาวางในเครื่องหมายคำพูดด้านล่างนี้ ***
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxzefBMHr1Ug_bD6-JHbarXBjI0X52EqH8cgWcMdv72Z3BbWN2tLP-U3b8FhBDwy0k/exec'; 
-    
-    const form = document.getElementById('hyr-job-form');
-    const btn = document.getElementById('submitBtn');
-
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        btn.disabled = true;
-        btn.innerText = "กำลังส่งข้อมูล...";
-
-        fetch(scriptURL, { 
-            method: 'POST', 
-            body: new FormData(form)
-        })
-        .then(response => {
-            alert('ยินดีด้วย! ส่งใบสมัครสำเร็จแล้ว ข้อมูลถูกบันทึกลง Google Sheet เรียบร้อย');
-            window.location.reload(); // รีเฟรชหน้าเว็บกลับไปจุดเริ่มต้น
-        })
-        .catch(error => {
-            console.error('Error!', error.message);
-            alert('ขออภัย! เกิดข้อผิดพลาดบางอย่าง กรุณาลองใหม่อีกครั้ง');
-            btn.disabled = false;
-            btn.innerText = "ส่งใบสมัครเข้าสถานี";
-        });
-    });
-</script>
 
 </body>
 </html>
