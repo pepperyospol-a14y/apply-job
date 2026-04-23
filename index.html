@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบสมัครพนักงาน</title>
+    <style>
+        /* ตกแต่งพื้นฐาน */
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        /* หน้าหลัก */
+        #main-page img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn-apply {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-apply:hover {
+            background-color: #27ae60;
+            transform: scale(1.05);
+        }
+
+        /* หน้าฟอร์ม (ซ่อนไว้ก่อน) */
+        #form-page {
+            display: none;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box; /* ทำให้ padding ไม่ล้น */
+        }
+
+        .btn-submit {
+            background-color: #3498db;
+            color: white;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="main-page">
+        <img src="https://via.placeholder.com/400x200?text=Railway+Recruitment" alt="ภาพประกอบ">
+        <h2>ยินดีต้อนรับสู่ระบบรับสมัครพนักงาน</h2>
+        <p>เปิดรับสมัครบุคลากรเข้าร่วมพนักงาน!</p>
+        <button class="btn-apply" onclick="showForm()">สมัคร</button>
+    </div>
+
+    <div id="form-page">
+        <h2 style="text-align: center;">แบบฟอร์มสมัครงาน</h2>
+        <form id="applicationForm">
+            <div class="form-group">
+                <label>ชื่อ-นามสกุล</label>
+                <input type="text" placeholder="ระบุชื่อจริง-นามสกุล" required>
+            </div>
+
+            <div class="form-group">
+                <label>ชื่อดิสคอร์ด (Discord ID)</label>
+                <input type="text" placeholder="ตัวอย่าง: Name#1234" required>
+            </div>
+
+            <div class="form-group">
+                <label>สมัครตำแหน่งอะไร (เลือกได้ 1 อย่าง)</label>
+                <select required>
+                    <option value="" disabled selected>-- เลือกตำแหน่ง --</option>
+                    <option>พนักงานขับรถไฟ</option>
+                    <option>นายสถานี</option>
+                    <option>พนักงานขายตั๋ว</option>
+                    <option>พนักงานคุมประแจ</option>
+                    <option>พนักงานไม้กั้น</option>
+                    <option>พนักงานรักษารถ</option>
+                    <option>พนักงานห้ามล้อ</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>เหตุผลที่อยากสมัคร (2-3 บรรทัด)</label>
+                <textarea rows="3" placeholder="อธิบายเหตุผลของคุณ..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>หลังจากที่สมัครไปแล้ว จะไม่เรื้อนแมพ / ทำให้คุณเต้ขายขี้หน้า / อับอาย ใช่หรือไม่?</label>
+                <select required>
+                    <option value="" disabled selected>-- โปรดยืนยัน --</option>
+                    <option value="yes">ใช่ ข้าพเจ้าสัญญา</option>
+                    <option value="no">ไม่ ข้าพเจ้าไม่สน</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-submit">ส่งใบสมัคร</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // ฟังก์ชันสลับหน้า
+    function showForm() {
+        document.getElementById('main-page').style.display = 'none';
+        document.getElementById('form-page').style.display = 'block';
+    }
+
+    // ฟังก์ชันเมื่อกดส่งฟอร์ม
+    document.getElementById('applicationForm').onsubmit = function(e) {
+        e.preventDefault();
+        alert('ส่งใบสมัครเรียบร้อยแล้ว! (ข้อมูลยังไม่ถูกส่งไปที่ไหน เพราะเป็นตัวอย่างหน้าเว็บ)');
+    };
+</script>
+
+</body>
+</html>
